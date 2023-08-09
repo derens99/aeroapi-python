@@ -18,14 +18,23 @@ class Airports:
         self.api_caller = api_caller
         self.endpoint = "airports"
 
-    def get_airports(self) -> Optional[Dict[str, Any]]:
+    def get_airports(self, max_pages: int = 1, cursor: Optional[str] = None) -> Optional[Dict[str, Any]]:
         """
         Retrieves a list of all airports.
 
+        Args:
+            max_pages (int): Optional, the maximum number of pages to retrieve (default 1).
+            cursor (str): Optional, a cursor for pagination (default None).
+            
         Returns:
             dict: The parsed JSON response, or None if the request failed.
         """
-        return self.api_caller.get(self.endpoint)
+        query = {
+            "max_pages": max_pages,
+            "cursor": cursor
+        }
+        path = self.api_caller._build_path(self.endpoint, query=query)
+        return self.api_caller.get(path)
 
     def get_airport(self, airport_id: str) -> Optional[Dict[str, Any]]:
         """

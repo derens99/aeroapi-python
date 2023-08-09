@@ -1,6 +1,6 @@
 from typing import Any, Dict, Optional
 
-from .APICaller import APICaller
+from aeroapi_python.APICaller import APICaller
 
 
 class Airports:
@@ -17,11 +17,10 @@ class Airports:
         """
         self.api_caller = api_caller
         self.endpoint = "airports"
-
+    
     def get_airports(self, max_pages: int = 1, cursor: Optional[str] = None) -> Optional[Dict[str, Any]]:
         """
         Retrieves a list of all airports.
-
         Args:
             max_pages (int): Optional, the maximum number of pages to retrieve (default 1).
             cursor (str): Optional, a cursor for pagination (default None).

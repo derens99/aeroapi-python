@@ -1,3 +1,4 @@
+![Pytest](https://github.com/derens99/aeroapi-python/workflows/Run%20pytest/badge.svg)
 
 # AeroApi Python
 

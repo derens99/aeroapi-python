@@ -1,4 +1,5 @@
-from ..aeroapi_python.AeroAPI import AeroAPI
+import os
+from aeroapi_python.AeroAPI import AeroAPI
 
 # Initialize the AeroAPI instance with your API key
 api_key = 'your-api-key'

@@ -17,15 +17,6 @@ class Airports:
         """
         self.api_caller = api_caller
         self.endpoint = "airports"
-
-    def get_airports1(self) -> Optional[Dict[str, Any]]:
-        """
-        Retrieves a list of all airports.
-
-        Returns:
-            dict: The parsed JSON response, or None if the request failed.
-        """
-        return self.api_caller.get(self.endpoint)
     
     def get_airports(self, max_pages: int = 1, cursor: Optional[str] = None) -> Optional[Dict[str, Any]]:
         """

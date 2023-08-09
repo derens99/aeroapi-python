@@ -1,5 +1,5 @@
 from typing import Optional, Dict, Any, List, Tuple
-from .APICaller import APICaller
+from aeroapi_python.APICaller import APICaller
 
 
 class Flights:

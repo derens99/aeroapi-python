@@ -1,9 +1,9 @@
-from .Airports import Airports
-from .APICaller import APICaller
-from .Flights import Flights
-from .History import History
-from .Miscellaneous import Miscellaneous
-from .Operators import Operators
+from aeroapi_python.Airports import Airports
+from aeroapi_python.APICaller import APICaller
+from aeroapi_python.Flights import Flights
+from aeroapi_python.History import History
+from aeroapi_python.Miscellaneous import Miscellaneous
+from aeroapi_python.Operators import Operators
 
 
 class AeroAPI:

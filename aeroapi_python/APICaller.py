@@ -71,6 +71,9 @@ class APICaller:
         except requests.exceptions.RequestException as e:
             logging.error(e)
             return None
+        except ValueError as e:
+            logging.error(e)
+            return None
 
     def get(
         self, endpoint: str, headers: Optional[Dict[str, Any]] = None

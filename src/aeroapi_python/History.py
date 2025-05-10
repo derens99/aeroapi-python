@@ -42,12 +42,20 @@ class History:
             api_caller (APICaller): An instance of the `APICaller` class.
         """
         self.api_caller = api_caller
-        self.endpoint = 'history'
+        self.endpoint = "history"
 
-    def flight_map(self, flight_id: str, height: int = 480, width: int = 640, layer_on: Optional[str] = None,
-                   layer_off: Optional[str] = None, show_data_block: Optional[bool] = None,
-                   airports_expand_view: Optional[bool] = None, show_airports: Optional[bool] = None,
-                   bounding_box: Optional[str] = None) -> Optional[Dict[str, Any]]:
+    def flight_map(
+        self,
+        flight_id: str,
+        height: int = 480,
+        width: int = 640,
+        layer_on: Optional[str] = None,
+        layer_off: Optional[str] = None,
+        show_data_block: Optional[bool] = None,
+        airports_expand_view: Optional[bool] = None,
+        show_airports: Optional[bool] = None,
+        bounding_box: Optional[str] = None,
+    ) -> Optional[Dict[str, Any]]:
         """
         Retrieves a map of a specific flight.
 
@@ -75,7 +83,9 @@ class History:
             "show_airports": show_airports,
             "bounding_box": bounding_box,
         }
-        path = self.api_caller._build_path(self.endpoint, sub_path=f"flights/{flight_id}/map", query=query)
+        path = self.api_caller._build_path(
+            self.endpoint, sub_path=f"flights/{flight_id}/map", query=query
+        )
         return self.api_caller.get(path)
 
     def flight_route(self, flight_id: str) -> Optional[Dict[str, Any]]:
@@ -88,10 +98,14 @@ class History:
         Returns:
             dict: The parsed JSON response, or None if the request failed.
         """
-        path = self.api_caller._build_path(self.endpoint, sub_path=f"flights/{flight_id}/route")
+        path = self.api_caller._build_path(
+            self.endpoint, sub_path=f"flights/{flight_id}/route"
+        )
         return self.api_caller.get(path)
 
-    def flight_track(self, flight_id: str, include_estimated_positions: Optional[bool] = None) -> Optional[Dict[str, Any]]:
+    def flight_track(
+        self, flight_id: str, include_estimated_positions: Optional[bool] = None
+    ) -> Optional[Dict[str, Any]]:
         """
         Retrieves the track of a specific flight.
 
@@ -103,7 +117,9 @@ class History:
             dict: The parsed JSON response, or None if the request failed.
         """
         query = {"include_estimated_positions": include_estimated_positions}
-        path = self.api_caller._build_path(self.endpoint, sub_path=f"flights/{flight_id}/track", query=query)
+        path = self.api_caller._build_path(
+            self.endpoint, sub_path=f"flights/{flight_id}/track", query=query
+        )
         return self.api_caller.get(path)
 
     def last_flight(self, registration: str) -> Optional[Dict[str, Any]]:
@@ -116,11 +132,20 @@ class History:
         Returns:
             dict: The parsed JSON response, or None if the request failed.
         """
-        path = self.api_caller._build_path(self.endpoint, sub_path=f"aircraft/{registration}/last_flight")
+        path = self.api_caller._build_path(
+            self.endpoint, sub_path=f"aircraft/{registration}/last_flight"
+        )
         return self.api_caller.get(path)
 
-    def flight_info(self, ident: str, ident_type: Optional[str] = None, start: Optional[int] = None,
-                    end: Optional[int] = None, max_pages: int = 1, cursor: Optional[str] = None) -> Optional[Dict[str, Any]]:
+    def flight_info(
+        self,
+        ident: str,
+        ident_type: Optional[str] = None,
+        start: Optional[int] = None,
+        end: Optional[int] = None,
+        max_pages: int = 1,
+        cursor: Optional[str] = None,
+    ) -> Optional[Dict[str, Any]]:
         """
         Retrieves information about a specific flight or set of flights.
 
@@ -142,5 +167,7 @@ class History:
             "max_pages": max_pages,
             "cursor": cursor,
         }
-        path = self.api_caller._build_path(self.endpoint, sub_path=f"flights/{ident}", query=query)
+        path = self.api_caller._build_path(
+            self.endpoint, sub_path=f"flights/{ident}", query=query
+        )
         return self.api_caller.get(path)

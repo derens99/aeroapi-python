@@ -67,11 +67,18 @@ class Miscellaneous:
         Returns:
             dict: The parsed JSON response, or None if the request failed.
         """
-        path = self.api_caller._build_path("aircraft", sub_path=f"types/{aircraft_type}")
+        path = self.api_caller._build_path(
+            "aircraft", sub_path=f"types/{aircraft_type}"
+        )
         return self.api_caller.get(path)
 
-    def global_disruption_counts(self, entity_type: str, time_period: str = 'today', max_pages: int = 1,
-                                 cursor: Optional[str] = None) -> Optional[Dict[str, Any]]:
+    def global_disruption_counts(
+        self,
+        entity_type: str,
+        time_period: str = "today",
+        max_pages: int = 1,
+        cursor: Optional[str] = None,
+    ) -> Optional[Dict[str, Any]]:
         """
         Retrieves global disruption counts for a specific entity type.
 
@@ -84,15 +91,15 @@ class Miscellaneous:
         Returns:
             dict: The parsed JSON response, or None if the request failed.
         """
-        query = {
-            "time_period": time_period,
-            "max_pages": max_pages,
-            "cursor": cursor
-        }
-        path = self.api_caller._build_path("disruption_counts", sub_path=f"{entity_type}", query=query)
+        query = {"time_period": time_period, "max_pages": max_pages, "cursor": cursor}
+        path = self.api_caller._build_path(
+            "disruption_counts", sub_path=f"{entity_type}", query=query
+        )
         return self.api_caller.get(path)
 
-    def disruption_counts(self, entity_type: str, entity_id: str, time_period: str = 'today') -> Optional[Dict[str, Any]]:
+    def disruption_counts(
+        self, entity_type: str, entity_id: str, time_period: str = "today"
+    ) -> Optional[Dict[str, Any]]:
         """
         Retrieves disruption counts for a specific entity.
 
@@ -105,13 +112,24 @@ class Miscellaneous:
             dict: The parsed JSON response, or None if the request failed.
         """
         query = {"time_period": time_period}
-        path = self.api_caller._build_path("disruption_counts", sub_path=f"{entity_type}/{entity_id}", query=query)
+        path = self.api_caller._build_path(
+            "disruption_counts", sub_path=f"{entity_type}/{entity_id}", query=query
+        )
         return self.api_caller.get(path)
 
-    def scheduled_flights(self, date_start: str, date_end: str, origin: Optional[str] = None,
-                           destination: Optional[str] = None, airline: Optional[str] = None,
-                           flight_number: Optional[str] = None, include_codeshares: bool = True,
-                           include_regional: bool = True, max_pages: int = 1, cursor: Optional[str] = None) -> Optional[Dict[str, Any]]:
+    def scheduled_flights(
+        self,
+        date_start: str,
+        date_end: str,
+        origin: Optional[str] = None,
+        destination: Optional[str] = None,
+        airline: Optional[str] = None,
+        flight_number: Optional[str] = None,
+        include_codeshares: bool = True,
+        include_regional: bool = True,
+        max_pages: int = 1,
+        cursor: Optional[str] = None,
+    ) -> Optional[Dict[str, Any]]:
         """
         Retrieves scheduled flights for a specific time period and set of filters.
 
@@ -138,7 +156,9 @@ class Miscellaneous:
             "include_codeshares": include_codeshares,
             "include_regional": include_regional,
             "max_pages": max_pages,
-            "cursor": cursor
+            "cursor": cursor,
         }
-        path = self.api_caller._build_path("schedules", sub_path=f"{date_start}/{date_end}", query=query)
+        path = self.api_caller._build_path(
+            "schedules", sub_path=f"{date_start}/{date_end}", query=query
+        )
         return self.api_caller.get(path)

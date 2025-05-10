@@ -36,9 +36,11 @@ class Operators:
             api_caller (APICaller): An instance of the `APICaller` class.
         """
         self.api_caller = api_caller
-        self.endpoint = 'operators'
+        self.endpoint = "operators"
 
-    def get_all_operators(self, max_pages: int = 1, cursor: Optional[str] = None) -> Optional[Dict[str, Any]]:
+    def get_all_operators(
+        self, max_pages: int = 1, cursor: Optional[str] = None
+    ) -> Optional[Dict[str, Any]]:
         """
         Retrieves a list of operator references.
 
@@ -49,10 +51,7 @@ class Operators:
         Returns:
             dict: The parsed JSON response, or None if the request failed.
         """
-        query = {
-            "max_pages": max_pages,
-            "cursor": cursor
-        }
+        query = {"max_pages": max_pages, "cursor": cursor}
         path = self.api_caller._build_path(self.endpoint, query=query)
         return self.api_caller.get(path)
 
@@ -69,7 +68,9 @@ class Operators:
         path = self.api_caller._build_path(self.endpoint, sub_path=operator_id)
         return self.api_caller.get(path)
 
-    def get_canonical_code(self, operator_id: str, country_code: Optional[str] = None) -> Optional[Dict[str, Any]]:
+    def get_canonical_code(
+        self, operator_id: str, country_code: Optional[str] = None
+    ) -> Optional[Dict[str, Any]]:
         """
         Retrieves the canonical code for a specific operator.
 
@@ -81,14 +82,20 @@ class Operators:
             dict: The parsed JSON response, or None if the request failed.
         """
         sub_path = f"{operator_id}/canonical"
-        query = {
-            "country_code": country_code
-        }
-        path = self.api_caller._build_path(self.endpoint, sub_path=sub_path, query=query)
+        query = {"country_code": country_code}
+        path = self.api_caller._build_path(
+            self.endpoint, sub_path=sub_path, query=query
+        )
         return self.api_caller.get(path)
 
-    def get_operator_flights(self, operator_id: str, start: Optional[str] = None, end: Optional[str] = None,
-                              max_pages: int = 1, cursor: Optional[str] = None) -> Optional[Dict[str, Any]]:
+    def get_operator_flights(
+        self,
+        operator_id: str,
+        start: Optional[str] = None,
+        end: Optional[str] = None,
+        max_pages: int = 1,
+        cursor: Optional[str] = None,
+    ) -> Optional[Dict[str, Any]]:
         """
         Retrieves recent and upcoming flights for a specific operator.
 
@@ -102,11 +109,8 @@ class Operators:
         Returns:
             dict: The parsed JSON response, or None if the request failed.
         """
-        query = {
-            "start": start,
-            "end": end,
-            "max_pages": max_pages,
-            "cursor": cursor
-        }
-        path = self.api_caller._build_path(self.endpoint, sub_path=f"{operator_id}/flights", query=query)
+        query = {"start": start, "end": end, "max_pages": max_pages, "cursor": cursor}
+        path = self.api_caller._build_path(
+            self.endpoint, sub_path=f"{operator_id}/flights", query=query
+        )
         return self.api_caller.get(path)

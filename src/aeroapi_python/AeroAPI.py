@@ -32,7 +32,7 @@ class AeroAPI:
         Args:
             api_key (str): The API key for the AeroAPI.
         """
-        self.base_url = 'https://aeroapi.flightaware.com/aeroapi/'
+        self.base_url = "https://aeroapi.flightaware.com/aeroapi/"
         self.api_key = api_key
         self.api_caller = APICaller(self.base_url, self.api_key)
         self.airports = Airports(self.api_caller)

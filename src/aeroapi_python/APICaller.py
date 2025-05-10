@@ -14,11 +14,11 @@ class APICaller:
         session (requests.Session): The session object for making requests.
 
     Methods:
-        _send_request(method: str, endpoint: str, payload: Optional[Dict[str, Any]] 
+        _send_request(method: str, endpoint: str, payload: Optional[Dict[str, Any]]
          = None, headers: Optional[Dict[str, Any]] = None) -> Optional[Dict[str, Any]]:
             Sends a request to the API.
 
-        get(endpoint: str, headers: Optional[Dict[str, Any]] = None) -> 
+        get(endpoint: str, headers: Optional[Dict[str, Any]] = None) ->
         Optional[Dict[str, Any]]:
             Sends a GET request to the API.
 
@@ -116,13 +116,13 @@ class APICaller:
         query: Optional[Dict[str, Any]] = None,
     ) -> str:
         """
-        Builds a URL path for an API request, including optional sub-path and query 
+        Builds a URL path for an API request, including optional sub-path and query
         parameters.
 
         Args:
             endpoint (str): The endpoint of the API request.
             sub_path (str): Optional, a sub-path to append to the endpoint.
-            query (dict): Optional, a dictionary of query parameters to include in the 
+            query (dict): Optional, a dictionary of query parameters to include in the
             URL.
 
         Returns:

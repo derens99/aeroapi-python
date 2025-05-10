@@ -17,21 +17,20 @@ class Airports:
         """
         self.api_caller = api_caller
         self.endpoint = "airports"
-    
-    def get_airports(self, max_pages: int = 1, cursor: Optional[str] = None) -> Optional[Dict[str, Any]]:
+
+    def get_airports(
+        self, max_pages: int = 1, cursor: Optional[str] = None
+    ) -> Optional[Dict[str, Any]]:
         """
         Retrieves a list of all airports.
         Args:
             max_pages (int): Optional, the maximum number of pages to retrieve (default 1).
             cursor (str): Optional, a cursor for pagination (default None).
-            
+
         Returns:
             dict: The parsed JSON response, or None if the request failed.
         """
-        query = {
-            "max_pages": max_pages,
-            "cursor": cursor
-        }
+        query = {"max_pages": max_pages, "cursor": cursor}
         path = self.api_caller._build_path(self.endpoint, query=query)
         return self.api_caller.get(path)
 
@@ -322,7 +321,7 @@ class Airports:
         Args:
             airport_id (str): The airport identifier (ICAO code).
             radius (int): The radius (in kilometers) to search for nearby airports.
-            only_iap (bool): Optional, whether to only include airports with instrument 
+            only_iap (bool): Optional, whether to only include airports with instrument
             approach procedures.
             max_pages (int): Optional, the maximum number of pages to retrieve.
             cursor (str): Optional, a cursor for paginating through the results.
@@ -394,9 +393,9 @@ class Airports:
 
         Args:
             airport_id (str): The airport identifier (ICAO code).
-            timestamp (int): Optional, the timestamp for the 
+            timestamp (int): Optional, the timestamp for the
             weather forecast (Unix time).
-            return_nearby_weather (bool): Optional, whether to include nearby weather 
+            return_nearby_weather (bool): Optional, whether to include nearby weather
             observations in the response.
 
         Returns:
@@ -426,11 +425,11 @@ class Airports:
 
         Args:
             airport_id (str): The airport identifier (ICAO code).
-            temperature_units (str): Optional, the temperature units to use in the 
+            temperature_units (str): Optional, the temperature units to use in the
             response ('Celsius' or 'Fahrenheit').
-            return_nearby_weather (bool): Optional, whether to include nearby weather 
+            return_nearby_weather (bool): Optional, whether to include nearby weather
             observations in the response.
-            timestamp (int): Optional, the timestamp for the 
+            timestamp (int): Optional, the timestamp for the
             weather conditions (in Unix time).
             max_pages (int): Optional, the maximum number of pages to retrieve.
             cursor (str): Optional, a cursor for paginating through the results.

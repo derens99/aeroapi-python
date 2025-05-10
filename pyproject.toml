@@ -1,0 +1,64 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aeroapi-python"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "Deren Singh", email = "derens99@gmail.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+    "pytest>=8.3.5",
+    "requests>=2.32.3",
+]
+
+[project.urls]
+Documentation = "https://github.com/Deren Singh/aeroapi-python#readme"
+Issues = "https://github.com/Deren Singh/aeroapi-python/issues"
+Source = "https://github.com/Deren Singh/aeroapi-python"
+
+[tool.hatch.version]
+path = "src/aeroapi_python/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/aeroapi_python tests}"
+
+[tool.coverage.run]
+source_pkgs = ["aeroapi_python", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/aeroapi_python/__about__.py",
+]
+
+[tool.coverage.paths]
+aeroapi_python = ["src/aeroapi_python", "*/aeroapi-python/src/aeroapi_python"]
+tests = ["tests", "*/aeroapi-python/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
